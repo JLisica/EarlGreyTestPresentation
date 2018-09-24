@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		0BFB046D215532CB009216EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFB046C215532CB009216EF /* AppDelegate.swift */; };
-		0BFB046F215532CB009216EF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFB046E215532CB009216EF /* ViewController.swift */; };
 		0BFB0472215532CB009216EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BFB0470215532CB009216EF /* Main.storyboard */; };
 		0BFB0474215532CF009216EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BFB0473215532CF009216EF /* Assets.xcassets */; };
 		0BFB0477215532CF009216EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BFB0475215532CF009216EF /* LaunchScreen.storyboard */; };
 		0BFB0482215532CF009216EF /* EarlGrayTestPresentationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFB0481215532CF009216EF /* EarlGrayTestPresentationTests.swift */; };
 		0BFB048D215532D0009216EF /* EarlGrayTestPresentationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFB048C215532D0009216EF /* EarlGrayTestPresentationUITests.swift */; };
+		0BFB049B215536A0009216EF /* BaseCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFB049A215536A0009216EF /* BaseCollectionCell.swift */; };
+		0BFB049D21553944009216EF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFB049C21553944009216EF /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +37,6 @@
 /* Begin PBXFileReference section */
 		0BFB0469215532CB009216EF /* EarlGrayTestPresentation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EarlGrayTestPresentation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BFB046C215532CB009216EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0BFB046E215532CB009216EF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0BFB0471215532CB009216EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0BFB0473215532CF009216EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0BFB0476215532CF009216EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +47,8 @@
 		0BFB0488215532D0009216EF /* EarlGrayTestPresentationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EarlGrayTestPresentationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BFB048C215532D0009216EF /* EarlGrayTestPresentationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarlGrayTestPresentationUITests.swift; sourceTree = "<group>"; };
 		0BFB048E215532D0009216EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0BFB049A215536A0009216EF /* BaseCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionCell.swift; sourceTree = "<group>"; };
+		0BFB049C21553944009216EF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,11 +100,12 @@
 			isa = PBXGroup;
 			children = (
 				0BFB046C215532CB009216EF /* AppDelegate.swift */,
-				0BFB046E215532CB009216EF /* ViewController.swift */,
 				0BFB0470215532CB009216EF /* Main.storyboard */,
 				0BFB0473215532CF009216EF /* Assets.xcassets */,
 				0BFB0475215532CF009216EF /* LaunchScreen.storyboard */,
 				0BFB0478215532CF009216EF /* Info.plist */,
+				0BFB049A215536A0009216EF /* BaseCollectionCell.swift */,
+				0BFB049C21553944009216EF /* HomeViewController.swift */,
 			);
 			path = EarlGrayTestPresentation;
 			sourceTree = "<group>";
@@ -256,8 +259,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0BFB046F215532CB009216EF /* ViewController.swift in Sources */,
+				0BFB049B215536A0009216EF /* BaseCollectionCell.swift in Sources */,
 				0BFB046D215532CB009216EF /* AppDelegate.swift in Sources */,
+				0BFB049D21553944009216EF /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
