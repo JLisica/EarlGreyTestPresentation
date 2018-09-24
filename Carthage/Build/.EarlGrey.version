@@ -1,0 +1,18 @@
+{
+  "iOS" : [
+    {
+      "hash" : "3291f397b963d2bef95b589598b38ea66ba73e9a77f9d633674640c45c501380",
+      "name" : "EarlGrey"
+    }
+  ],
+  "commitish" : "08b2bf68f5a6eb9c2d91cbfb8f437f85264dba37",
+  "watchOS" : [
+
+  ],
+  "tvOS" : [
+
+  ],
+  "Mac" : [
+
+  ]
+}
