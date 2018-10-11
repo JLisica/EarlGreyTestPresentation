@@ -10,9 +10,17 @@ import UIKit
 
 class ChannelDetailViewController: UIViewController {
 
+    @IBOutlet weak var channelName: UILabel!
+    @IBOutlet weak var channelImage: UIImageView!
+    
+    var name: String?
+    var image: UIImage?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.accessibilityIdentifier = "channelPreview"
+        channelName.text = name
+        channelImage.image = image
         // Do any additional setup after loading the view.
     }
 

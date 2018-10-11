@@ -111,27 +111,47 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell = myChannelCell
         } else if collectionView == hotChannelsCollectionView {
             let channel = hotChannels[indexPath.row]
-            let myChannelCell = collectionView.dequeueReusableCell(withReuseIdentifier: "HotChannelCell", for: indexPath) as? BaseCollectionCell
-            myChannelCell?.titlelabel.text = channel.name
-            myChannelCell?.coverImageView.image = channel.logo
-            cell = myChannelCell
+            let hotChannelCell = collectionView.dequeueReusableCell(withReuseIdentifier: "HotChannelCell", for: indexPath) as? BaseCollectionCell
+            hotChannelCell?.titlelabel.text = channel.name
+            hotChannelCell?.coverImageView.image = channel.logo
+            hotChannelCell?.accessibilityIdentifier = "hotChannel\(indexPath.row)"
+            cell = hotChannelCell
         } else if collectionView == newChannelsCollectionView {
             let channel = newChannels[indexPath.row]
-            let myChannelCell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewChannelCell", for: indexPath) as? BaseCollectionCell
-            myChannelCell?.titlelabel.text = channel.name
-            myChannelCell?.coverImageView.image = channel.logo
-            cell = myChannelCell
+            let newChannelCell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewChannelCell", for: indexPath) as? BaseCollectionCell
+            newChannelCell?.titlelabel.text = channel.name
+            newChannelCell?.coverImageView.image = channel.logo
+            newChannelCell?.accessibilityIdentifier = "newChannel\(indexPath.row)"
+            cell = newChannelCell
         } else if collectionView == categoriesCollectionView {
             let category = categories[indexPath.row]
-            let myChannelCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as? BaseCollectionCell
-            myChannelCell?.titlelabel.text = category.name
-            myChannelCell?.coverImageView.image = category.image
-            myChannelCell?.accessibilityIdentifier = "category\(indexPath.row)"
-            cell = myChannelCell
+            let categoryCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as? BaseCollectionCell
+            categoryCell?.titlelabel.text = category.name
+            categoryCell?.coverImageView.image = category.image
+            categoryCell?.accessibilityIdentifier = "category\(indexPath.row)"
+            cell = categoryCell
         }
         return cell
     }
     
+    override public func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            if identifier == "channelDetailsSegue" {
+                if let channelVC = segue.destination as? ChannelDetailViewController, let channel = sender as? Channel {
+                                   channelVC.name = channel.name
+                                   channelVC.image = channel.logo
+                }
+                else if  identifier == "categoryPreview" {
+                    if let categoryVC = segue.destination as? CategoryDetailViewController, let category = sender as? ChannelCategory {
+                                    categoryVC.name = category.name
+                                    categoryVC.image = category.image
+                    }
+                }
+            }
+        }
+    }
+
+            
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         var channel: Channel?
         if collectionView == myChannelsCollectionView {
@@ -145,8 +165,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             if c.name == "More" {
                 performSegue(withIdentifier: "showMoreChannelsSegue", sender: nil)
             } else {
-                performSegue(withIdentifier: "channelDetailsSegue", sender: nil)
+                performSegue(withIdentifier: "channelDetailsSegue", sender: channel)
             }
+            
         }
     }
 }

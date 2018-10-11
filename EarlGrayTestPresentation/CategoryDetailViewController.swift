@@ -10,9 +10,16 @@ import UIKit
 
 class CategoryDetailViewController: UIViewController {
 
+    @IBOutlet weak var categoryImage: UIImageView!
+    @IBOutlet weak var categoryName: UILabel!
+    var name: String?
+    var image: UIImage?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.accessibilityIdentifier = "categoryPreview"
+        categoryName.text = name
+        categoryImage.image = image
         // Do any additional setup after loading the view.
     }
 
