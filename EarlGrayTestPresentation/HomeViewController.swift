@@ -28,9 +28,16 @@ class HomeViewController: UITableViewController {
     @IBOutlet weak var hotChannelsCollectionView: UICollectionView!
     @IBOutlet weak var newChannelsCollectionView: UICollectionView!
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
-    
+    @IBOutlet weak var searchBar: UISearchBar!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.accessibilityIdentifier = "table"
+        searchBar.accessibilityIdentifier = "searchBar"
+        myChannelsCollectionView.accessibilityIdentifier = "myChannelsCollection"
+        hotChannelsCollectionView.accessibilityIdentifier = "hotChannelsCollection"
+        newChannelsCollectionView.accessibilityIdentifier = "newChannelsCollection"
+        categoriesCollectionView.accessibilityIdentifier = "categoriesCollection"
         createInitData()
     }
 
@@ -41,7 +48,8 @@ class HomeViewController: UITableViewController {
             Channel(name: "Vojkov Kanal", logo: UIImage(named: "Automotive")),
             Channel(name: "Sarin Kanal", logo: UIImage(named: "Banking&Finance")),
             Channel(name: "Jelenin Kanal", logo: UIImage(named: "Celebrity")),
-            Channel(name: "Maretov Kanal", logo: UIImage(named: "Customer Goods"))
+            Channel(name: "Maretov Kanal", logo: UIImage(named: "Customer Goods")),
+            Channel(name: "More", logo: UIImage(named: "Other"))
         ]
         hotChannels = [
             Channel(name: "Jocin Kanal", logo: UIImage(named: "Entertainment")),
@@ -50,7 +58,7 @@ class HomeViewController: UITableViewController {
             Channel(name: "Marinin Kanal", logo: UIImage(named: "Health&Beauty")),
             Channel(name: "Anin Kanal", logo: UIImage(named: "Music")),
             Channel(name: "Milosev Kanal", logo: UIImage(named: "News")),
-            Channel(name: "Aleksandrin Kanal", logo: UIImage(named: "Other"))
+            Channel(name: "Aleksandrin Kanal", logo: UIImage(named: "Automotive"))
         ]
         newChannels = [
             Channel(name: "Ivanov kanal", logo: UIImage(named: "Public Services")),
@@ -94,6 +102,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             let myChannelCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyChannelCell", for: indexPath) as? BaseCollectionCell
             myChannelCell?.titlelabel.text = channel.name
             myChannelCell?.coverImageView.image = channel.logo
+            if channel.name == "More" {
+                myChannelCell?.accessibilityIdentifier = "myChannelMore"
+            } else {
+                myChannelCell?.accessibilityIdentifier = "myChannel\(indexPath.row)"
+            }
+
             cell = myChannelCell
         } else if collectionView == hotChannelsCollectionView {
             let channel = hotChannels[indexPath.row]
@@ -112,8 +126,27 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             let myChannelCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as? BaseCollectionCell
             myChannelCell?.titlelabel.text = category.name
             myChannelCell?.coverImageView.image = category.image
+            myChannelCell?.accessibilityIdentifier = "category\(indexPath.row)"
             cell = myChannelCell
         }
         return cell
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        var channel: Channel?
+        if collectionView == myChannelsCollectionView {
+            channel = myChannels[indexPath.row]
+        } else if collectionView == hotChannelsCollectionView {
+            channel = hotChannels[indexPath.row]
+        } else if collectionView == newChannelsCollectionView {
+            channel = newChannels[indexPath.row]
+        }
+        if let c = channel {
+            if c.name == "More" {
+                performSegue(withIdentifier: "showMoreChannelsSegue", sender: nil)
+            } else {
+                performSegue(withIdentifier: "channelDetailsSegue", sender: nil)
+            }
+        }
     }
 }

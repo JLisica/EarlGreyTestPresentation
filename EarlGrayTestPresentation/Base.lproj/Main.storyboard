@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,11 +18,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="hsU-Mk-s32">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
                         <sections>
                             <tableViewSection headerTitle="My Channels" id="jmj-WE-eoc">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="135" id="Xek-ys-9NK">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="135"/>
+                                        <rect key="frame" x="0.0" y="99.5" width="375" height="135"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Xek-ys-9NK" id="UpW-sg-9Bq">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="134.5"/>
@@ -104,7 +110,7 @@
                             <tableViewSection headerTitle="Hot Channels" id="bhM-cx-txN">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="135" id="BoT-VC-8Zk">
-                                        <rect key="frame" x="0.0" y="246.5" width="375" height="135"/>
+                                        <rect key="frame" x="0.0" y="290.5" width="375" height="135"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BoT-VC-8Zk" id="beG-8n-0YU">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="134.5"/>
@@ -187,7 +193,7 @@
                             <tableViewSection headerTitle="New Channels" id="06G-tN-vt5">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="135" id="tDI-Vb-wxC">
-                                        <rect key="frame" x="0.0" y="437.5" width="375" height="135"/>
+                                        <rect key="frame" x="0.0" y="481.5" width="375" height="135"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tDI-Vb-wxC" id="iWm-mP-N88">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="134.5"/>
@@ -270,7 +276,7 @@
                             <tableViewSection headerTitle="Categories Channels" id="U4V-dH-KxU">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="135" id="eje-Qs-BVd">
-                                        <rect key="frame" x="0.0" y="628.5" width="375" height="135"/>
+                                        <rect key="frame" x="0.0" y="672.5" width="375" height="135"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eje-Qs-BVd" id="oS5-VZ-JIv">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="134.5"/>
@@ -331,6 +337,7 @@
                                                                 <outlet property="coverImageView" destination="jjB-Lk-uLX" id="7M5-2G-JKn"/>
                                                                 <outlet property="subviewsContainer" destination="8TR-Ix-YiO" id="SOd-SI-MXS"/>
                                                                 <outlet property="titlelabel" destination="Jeu-5A-pS0" id="dl8-WP-zKh"/>
+                                                                <segue destination="PB6-Dr-wrv" kind="show" id="9pS-yO-Rty"/>
                                                             </connections>
                                                         </collectionViewCell>
                                                     </cells>
@@ -356,17 +363,69 @@
                             <outlet property="delegate" destination="F6f-6d-Wh1" id="dM4-d0-n2G"/>
                         </connections>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" title="Home Screen" id="RI9-7p-tXU"/>
                     <connections>
                         <outlet property="categoriesCollectionView" destination="nkY-BK-oLO" id="qw7-mQ-ynW"/>
                         <outlet property="hotChannelsCollectionView" destination="1WN-Ce-WAC" id="sFc-IQ-aEh"/>
                         <outlet property="myChannelsCollectionView" destination="Aez-wt-V4d" id="Nl1-Hc-J31"/>
                         <outlet property="newChannelsCollectionView" destination="JE5-xg-Nbf" id="P5h-x0-D65"/>
+                        <outlet property="searchBar" destination="hsU-Mk-s32" id="iZd-vJ-vf7"/>
+                        <segue destination="Hv2-IG-de8" kind="show" identifier="channelDetailsSegue" id="feI-ak-WhL"/>
+                        <segue destination="Tzl-eD-Bt5" kind="show" identifier="showMoreChannelsSegue" id="KuK-Z4-NMl"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="djm-ld-X0K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="956" y="-3.1484257871064472"/>
+        </scene>
+        <!--Channel Search Screen-->
+        <scene sceneID="oTA-i0-a6f">
+            <objects>
+                <viewController id="Tzl-eD-Bt5" customClass="ChannelSearchViewController" customModule="EarlGrayTestPresentation" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AsC-Dt-li1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.2660626089" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <viewLayoutGuide key="safeArea" id="JDv-tz-UKC"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Channel Search Screen" id="Ydd-xU-Ykc"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iGM-tT-4HE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2100" y="-910"/>
+        </scene>
+        <!--Channel Details-->
+        <scene sceneID="6cS-hp-ssG">
+            <objects>
+                <viewController id="Hv2-IG-de8" customClass="ChannelDetailViewController" customModule="EarlGrayTestPresentation" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qOU-7p-joZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="0.21642351779999999" blue="0.14397433270000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <viewLayoutGuide key="safeArea" id="aXi-oa-TjY"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Channel Details" id="YjZ-6c-LNo"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YlG-hb-6nP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2100" y="-250"/>
+        </scene>
+        <!--Category Details-->
+        <scene sceneID="UFE-b7-j7o">
+            <objects>
+                <viewController id="PB6-Dr-wrv" customClass="CategoryDetailViewController" customModule="EarlGrayTestPresentation" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="axT-8V-8lT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.27952460019999997" green="0.33468623330000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="PRW-cT-Hex"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Category Details" id="1Nw-D0-nTq"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g7K-ut-WpC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2100" y="407"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hMk-ro-a4D">
